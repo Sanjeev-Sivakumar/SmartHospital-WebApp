@@ -1,0 +1,112 @@
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0e0e0, #b3b3b3);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+form {
+    margin: 30px 0;
+}
+
+form input,
+form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form input:focus,
+form button:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#patient-details {
+    margin-top: 40px;
+    padding: 15px;
+    border-top: 2px solid #3498db;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+#patient-details h3 {
+    color: #2980b9;
+}
+
+#sample-db {
+    margin-top: 40px;
+    padding: 15px;
+    border-top: 2px solid #3498db;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+#sample-db ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sample-db li {
+    padding: 8px 15px;
+    margin: 8px 0;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#sample-db li:hover {
+    background-color: #f1f1f1;
+}
+
+#barcode {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input[type="text"], input[type="email"] {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    background-color: #fff;
+}

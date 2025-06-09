@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="Signup.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <form id="signup-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your full name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required><br>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" placeholder="Confirm your password" required><br>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div id="patient-details" style="display:none;">
+            <h3>Patient Details:</h3>
+            <p>Name: <span id="patient-name"></span></p>
+            <p>Email: <span id="patient-email"></span></p>
+            <p>Patient ID: <span id="patient-id"></span></p>
+            <svg id="barcode"></svg>
+        </div>
+
+        <div id="sample-db">
+            <h3>Sample Database:</h3>
+            <ul id="database-list"></ul>
+        </div>
+    </div>
+
+    <script src="SignupJS.js"></script>
+</body>
+</html>

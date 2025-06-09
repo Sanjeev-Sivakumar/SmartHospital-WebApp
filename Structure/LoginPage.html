@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: white;
+        }
+        .login-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #welcome {
+            font-size: 2em;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Chatbot Panel */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-width: 100%;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+            overflow: hidden;
+            z-index: 1000;
+        }
+        .chat-header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .chat-box {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            background: #111;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+        }
+        .chat-message.user {
+            text-align: right;
+        }
+        .chat-message.bot {
+            text-align: left;
+        }
+        .chat-message p {
+            margin: 0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .chat-message.user p {
+            background-color: #333;
+            color: white;
+        }
+        .chat-message.bot p {
+            background-color: #444;
+            color: white;
+        }
+        .chat-input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #333;
+            border-top: 1px solid #555;
+        }
+        .chat-input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 20px;
+            background-color: #222;
+            color: white;
+            outline: none;
+        }
+        .chat-input:focus {
+            border-color: #fff;
+        }
+        .chat-submit {
+            width: 15%;
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chat-submit:hover {
+            background-color: #777;
+        }
+
+        /* Button to toggle the chatbot */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .chat-toggle-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page Content -->
+    <div class="login-container">
+        <h1 id="welcome">Welcome to 505 Not Found</h1>
+        <h4>Sign me in as</h4>
+        <button id="doc" onclick="window.location.href='DoctorLogin.html'">Doctor</button>
+        <button id="nurse" onclick="window.location.href='NurseLogin.html'">Nurse</button>
+        <button id="Visitor" onclick="window.location.href='Visitor.html'">Patient</button>
+
+        <!-- Button for Medicine Shopping -->
+        <button id="medicineShopping" onclick="window.location.href='ecom.html'">Medicine Shopping</button>
+    </div>
+
+    <!-- Chatbot Panel -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            Chatbot
+        </div>
+        <div class="chat-box" id="chatBox">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="userInput" class="chat-input" placeholder="Type a message...">
+            <button class="chat-submit" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Toggle Button for Chatbot -->
+    <button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChat()">💬</button>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value.trim();
+            if (userInput === '') return;
+
+            // Display user's message
+            displayMessage(userInput, 'user');
+
+            // Get bot's response
+            const botResponse = getBotResponse(userInput);
+
+            // Display bot's response after a delay
+            setTimeout(() => {
+                displayMessage(botResponse, 'bot');
+            }, 1000);
+
+            // Clear input field
+            document.getElementById('userInput').value = '';
+        }
+
+        function displayMessage(message, sender) {
+            const chatBox = document.getElementById('chatBox');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', sender);
+            const messageParagraph = document.createElement('p');
+            messageParagraph.textContent = message;
+            messageDiv.appendChild(messageParagraph);
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+        }
+
+        function getBotResponse(input) {
+            // Simple keyword-based responses
+            const responses = {
+                "hi": "Hello! How can I assist you today?",
+                "hello": "Hi there! How can I help?",
+                "how are you": "I'm just a bot, but I'm doing great! How about you?",
+                "bye": "Goodbye! Have a great day!",
+                "default": "Sorry, I didn't understand that. Can you rephrase?"
+            };
+
+            // Return the response or default response if no match
+            return responses[input.toLowerCase()] || responses["default"];
+        }
+
+        function toggleChat() {
+            const chatContainer = document.getElementById('chatContainer');
+            const chatToggleBtn = document.getElementById('chatToggleBtn');
+            const isVisible = chatContainer.style.display === 'block';
+
+            // Toggle the chatbot visibility
+            chatContainer.style.display = isVisible ? 'none' : 'block';
+
+            // Toggle the chat toggle button visibility
+            chatToggleBtn.style.display = isVisible ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+</html>

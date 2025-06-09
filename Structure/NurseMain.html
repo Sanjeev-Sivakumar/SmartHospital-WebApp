@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're a Nurse!</title>
+    <link rel="stylesheet" href="NurseMainCSS.css">
+    <script src="NurseMainJS.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, Nurse!</h2>
+        <label for="ptcode">Patient's code: </label>
+        <input type="text" name="ptcode" id="ptcode" placeholder="Enter Patient's code" oninput="searchPatient()">
+        
+        <div id="ptdetails"></div><br>
+        
+        <div>
+            <h3>Your Work</h3>
+            <input placeholder="Task description" class="js-input" id="task-input">
+            <input type="date" class="js-due" id="due-date">
+            <input type="time" class="js-time" id="due-time">
+            <button id="add" onclick="addTask()">Add</button>
+            <div class="jsinp todogrid"></div>
+        </div>
+    </div>
+</body>
+</html>

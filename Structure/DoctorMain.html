@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Barcode and PDF</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="styledoc.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Patient Information</h2>
+    <h3>Prescription Details:</h3>
+    <textarea name="prescription" id="prescription" placeholder="Enter the prescription details here..."></textarea>
+    
+    <hr>
+
+    <div class="form-group">
+        <label for="pname">Name:</label>
+        <input type="text" id="pname" name="pname">
+    </div>
+
+    <div class="form-group gender-group">
+        <label>Gender:</label>
+        <input type="radio" id="genderMale" name="gender" value="Male"><label for="genderMale">Male</label>
+        <input type="radio" id="genderFemale" name="gender" value="Female"><label for="genderFemale">Female</label>
+        <input type="radio" id="genderOther" name="gender" value="Other"><label for="genderOther">Other</label>
+    </div>
+
+    <div class="form-group">
+        <label for="phno">Phone Number:</label>
+        <input type="tel" id="phno" name="phno">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea name="address" id="address"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="cause">Cause:</label>
+        <input type="text" id="cause" name="cause">
+    </div>
+
+    <div class="form-group">
+        <label for="appointmentDate">Appointment Date:</label>
+        <input type="date" id="appointmentDate" name="appointmentDate">
+    </div>
+
+    <div class="form-group">
+        <label for="appointmentTime">Appointment Time:</label>
+        <input type="time" id="appointmentTime" name="appointmentTime">
+    </div>
+
+    <div class="form-group">
+        <label for="city">Select a place:</label>
+        <select id="city" name="city">
+            <option value="chennai">Chennai</option>
+            <option value="coimbatore">Coimbatore</option>
+            <option value="madurai">Madurai</option>
+            <option value="trichy">Tiruchirapalli</option>
+            <option value="salem">Salem</option>
+            <option value="tuticorin">Tuticorin</option>
+            <option value="vellore">Vellore</option>
+            <option value="tirunelveli">Tirunelveli</option>
+            <option value="neyveli">Neyveli</option>
+            <option value="pondicherry">Puducherry</option>
+            <option value="thanjavur">Thanjavur</option>
+            <option value="erode">Erode</option>
+            <option value="nagapattinam">Nagapattinam</option>
+            <option value="dharmapuri">Dharmapuri</option>
+            <option value="krishnagiri">Krishnagiri</option>
+        </select>
+    </div>
+
+    <button class="submit-btn" type="button" onclick="generateBarcode()">Generate Barcode</button>
+    
+    <svg id="barcode"></svg> <!-- Barcode will be rendered here -->
+    
+    <button type="button" onclick="generateBarcodeAndPDF()">Generate Barcode and PDF</button>
+</div>
+
+<script>
+// Function to generate barcode
+function generateBarcode() {
+    const barcodeValue = document.getElementById('pname').value; // Get patient's name as barcode value
+
+    // Validate barcode value
+    if (!barcodeValue) {
+        alert("Please enter a name to generate the barcode.");
+        return;
+    }
+
+    // Generate the barcode using JsBarcode library
+    JsBarcode("#barcode", barcodeValue, {
+        format: "CODE128",  // You can change the format to any other barcode type
+        width: 2,
+        height: 100,
+        displayValue: true
+    });
+}
+
+// Function to generate the PDF with patient details and barcode
+function generateBarcodeAndPDF() {
+    const patientName = document.getElementById('pname').value;
+    const gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : 'Not specified';
+    const phone = document.getElementById('phno').value;
+    const address = document.getElementById('address').value;
+    const cause = document.getElementById('cause').value;
+    const appointmentDate = document.getElementById('appointmentDate').value;
+    const appointmentTime = document.getElementById('appointmentTime').value;
+    const city = document.getElementById('city').value;
+    const prescription = document.getElementById('prescription').value;
+
+    // Validate necessary fields
+    if (!patientName || !phone || !address || !appointmentDate || !appointmentTime) {
+        alert("Please fill in all the required fields.");
+        return;
+    }
+
+    // Generate the barcode and convert it to an image using JsBarcode
+    const barcodeValue = patientName;  // Use patient's name as barcode value
+    const canvas = document.createElement('canvas');
+    JsBarcode(canvas, barcodeValue, {
+        format: "CODE128",
+        width: 2,
+        height: 70,  // Slightly smaller height
+        displayValue: true
+    });
+    
+    const imgData = canvas.toDataURL('image/png');  // Convert canvas to image data
+
+    // Generate the PDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Add patient information to the PDF
+    doc.text('Patient Name: ' + patientName, 10, 10);
+    doc.text('Gender: ' + gender, 10, 20);
+    doc.text('Phone Number: ' + phone, 10, 30);
+    doc.text('Address: ' + address, 10, 40);
+    doc.text('Cause: ' + cause, 10, 50);
+    doc.text('Appointment Date: ' + appointmentDate, 10, 60);
+    doc.text('Appointment Time: ' + appointmentTime, 10, 70);
+    doc.text('City: ' + city, 10, 80);
+    doc.text('Prescription: ' + prescription, 10, 90);
+
+    // Add barcode image to the PDF
+    const barcodeWidth = 120;  // Adjust barcode width (smaller size)
+    const barcodeHeight = 40;  // Adjust barcode height (smaller size)
+
+    // Center the barcode in the PDF
+    const pageWidth = doc.internal.pageSize.width;
+    const xOffset = (pageWidth - barcodeWidth) / 2;  // Calculate center position
+
+    doc.addImage(imgData, 'PNG', xOffset, 100, barcodeWidth, barcodeHeight);  // Adjust position and size as needed
+
+    // Save the generated PDF
+    doc.save('patient_info.pdf');
+}
+</script>
+
+</body>
+</html>

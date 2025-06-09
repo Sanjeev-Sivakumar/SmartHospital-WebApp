@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse Login</title>
+    <link rel="stylesheet" href="NurseLogin.css">
+    <script src="nursedata.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="nurse-512.webp" alt="Profile Image" class="profile-image">
+        <h1>Welcome, You're a Nurse!</h1>
+        <input type="text" id="un" placeholder="Username" required><br>
+        <input type="password" id="pwd" placeholder="Password" required><br>
+        <h4>New user?</h4>
+        <a href="Signup.html">Sign up</a>
+        <button onclick="login()">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Invalid username or password</p>
+    </div>
+    
+</body>
+</html>

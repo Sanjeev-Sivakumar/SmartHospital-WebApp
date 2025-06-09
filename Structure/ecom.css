@@ -1,0 +1,227 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #004c8c;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header .logo img {
+    max-width: 100px;
+}
+
+header .welcome-message {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.navbar {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 30px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #004c8c;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #444;
+    margin-bottom: 40px;
+}
+
+/* Product Listing Styles */
+.product-listing {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.product-box {
+    background-color: #fff;
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-box:hover {
+    transform: translateY(-10px);
+}
+
+.product-box img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.product-box h3 {
+    margin-top: 10px;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.product-box p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.add-to-cart {
+    background-color: #004c8c;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: #003b6f;
+}
+
+/* Cart Summary Styles */
+.cart-summary {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-summary p {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.cart-summary button {
+    background-color: #004c8c;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.cart-summary button:hover {
+    background-color: #003b6f;
+}
+
+/* Checkout Page Styles */
+#checkout-page {
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#payment-form label {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+#payment-form input, #payment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#payment-form button {
+    background-color: #004c8c;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#payment-form button:hover {
+    background-color: #003b6f;
+}
+
+/* Barcode Styles */
+#barcode-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#barcode {
+    margin-top: 20px;
+    height: 100px;
+    width: 100%;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #004c8c;
+    color: white;
+}
+
+footer p {
+    font-size: 1.1em;
+}
+
+footer .partners {
+    margin-top: 20px;
+}
+
+footer .partners ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer .partners li {
+    font-size: 1.1em;
+    margin: 5px 0;
+}

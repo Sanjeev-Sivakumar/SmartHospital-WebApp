@@ -1,0 +1,100 @@
+/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f1f1f1;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.6)),
+                url('file:///C:/Users/Sanjeev%20Kumar%20S/Desktop/HACKATHONS/Hackathon%201%20(Hospital%20management%20system)/Structure/WhatsApp%20Image%202024-11-13%20at%2010.42.31%20AM.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    animation: backgroundMove 30s linear infinite; /* Animation running infinitely */
+}
+
+/* Keyframes for smooth, continuous background animation */
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+#welcome {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e0e0e0;
+}
+
+h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #d1d1d1;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0.8); /* Dark button background */
+    color: #f1f1f1; /* Light text */
+    border: 1px solid #444; /* Border to distinguish the button */
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter dark button on hover */
+    color: #3498db; /* Blue color on hover for visibility */
+    border-color: #3498db;
+}
+
+/* Optional: Style for any additional elements, like forms or containers */
+.container {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+h2, h3 {
+    color: #f1f1f1;
+}
+
+input,
+textarea {
+    background-color: #333;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 6px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
